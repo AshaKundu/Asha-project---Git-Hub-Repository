@@ -29,7 +29,7 @@ const ChatAssistant = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('https://semianatomic-beata-semiliberally.ngrok-free.dev/chat', {
+      const response = await fetch('http://ec2-54-196-248-14.compute-1.amazonaws.com:8000/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ const ChatAssistant = () => {
 
   const clearChat = async () => {
     try {
-      await fetch(`https://semianatomic-beata-semiliberally.ngrok-free.dev/chat/${sessionId}`, {
+      await fetch(`http://ec2-54-196-248-14.compute-1.amazonaws.com:8000/chat/${sessionId}`, {
         method: 'DELETE',
       });
       setMessages([]);
