@@ -1,0 +1,27 @@
+# Node / frontend
+node_modules/
+dist/
+.cache/
+.npm/
+.eslintcache
+
+# Python
+venv/
+*.pyc
+__pycache__/
+
+# Secrets / credentials
+credentials/
+credientials/
+*.pem
+*.key
+*.env
+.env
+.gdrive-server-credentials.json
+
+# Archives
+*.zip
+
+# OS / editor
+.DS_Store
+Thumbs.db
