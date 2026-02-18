@@ -63,6 +63,7 @@ streamlit run app.py
   - `products.csv`
   - `reviews.csv`
   - `store_policies.csv`
+- If `SMART_SHOP_DATA_DIR` is not set, the backend uses bundled CSVs in `smart-shop-mvp/backend/data`.
 - Optional personalization CSVs:
   - `users.csv` (id,name,preferred_categories,budget_min,budget_max)
   - `user_events.csv` (user_id,product_id,event_type,date)

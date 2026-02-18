@@ -10,7 +10,17 @@ from sqlalchemy.orm import Session
 
 from .models import Product, Review, StorePolicy, UserEvent, UserProfile
 
+PROJECT_DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 DEFAULT_DATA_DIR = Path("C:/Users/ashad/Downloads/Smart Shop")
+
+
+def _resolve_data_dir() -> Path:
+    env_dir = os.getenv("SMART_SHOP_DATA_DIR")
+    if env_dir:
+        return Path(env_dir)
+    if PROJECT_DATA_DIR.exists():
+        return PROJECT_DATA_DIR
+    return DEFAULT_DATA_DIR
 
 
 def _load_csv(path: Path):
@@ -157,12 +167,12 @@ def seed_if_needed(session: Session) -> bool:
     if has_products:
         has_users = session.execute(select(UserProfile).limit(1)).scalars().first()
         if not has_users:
-            data_dir = Path(os.getenv("SMART_SHOP_DATA_DIR", str(DEFAULT_DATA_DIR)))
+            data_dir = _resolve_data_dir()
             _seed_users(session, data_dir / "users.csv")
             session.commit()
             return True
         return False
 
-    data_dir = Path(os.getenv("SMART_SHOP_DATA_DIR", str(DEFAULT_DATA_DIR)))
+    data_dir = _resolve_data_dir()
     seed_database(session, data_dir)
     return True
