@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Shop MVP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="background"></div>
+    <main class="layout">
+      <section class="panel catalog">
+        <header>
+          <p class="eyebrow">Smart Shop</p>
+          <h1>AI commerce assistant</h1>
+          <p class="subhead">Discover, compare, and decide faster with live price context and review sentiment.</p>
+        </header>
+        <div class="search">
+          <input id="searchInput" type="search" placeholder="Search products, brands, categories" />
+          <button id="searchButton">Search</button>
+        </div>
+        <div class="catalog-body">
+          <div id="productList" class="list"></div>
+        </div>
+      </section>
+
+      <section class="panel assistant">
+        <div class="assistant-header">
+          <h2>Assistant</h2>
+          <div id="activeProduct" class="active-product">Select a product to anchor recommendations.</div>
+        </div>
+        <div class="assistant-grid">
+          <div class="card" id="insightsCard">
+            <h3>Insights</h3>
+            <div class="insights" id="insights"></div>
+          </div>
+          <div class="card" id="policyCard">
+            <h3>Policy Automation</h3>
+            <div class="insights" id="policy"></div>
+          </div>
+        </div>
+        <div class="chat">
+          <div id="chatLog" class="chat-log"></div>
+          <form id="chatForm" class="chat-input">
+            <input id="chatMessage" type="text" placeholder="Ask about price comparison, reviews, recommendations" />
+            <button type="submit">Send</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
