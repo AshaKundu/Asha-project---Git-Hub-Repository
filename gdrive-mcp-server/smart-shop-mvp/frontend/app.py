@@ -2,7 +2,16 @@
 import requests
 import streamlit as st
 
-API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:8000")
+API_BASE_URL = os.getenv("API_BASE_URL")
+if not API_BASE_URL:
+    try:
+        API_BASE_URL = st.secrets["API_BASE_URL"]
+    except Exception:
+        API_BASE_URL = None
+
+if not API_BASE_URL:
+    st.error("API_BASE_URL is not set. Configure it in environment variables or Streamlit secrets.")
+    st.stop()
 CATEGORIES = ["smartphone", "laptop", "smart_tv", "speaker"]
 
 st.set_page_config(page_title="Smart Shop MVP", layout="wide")
